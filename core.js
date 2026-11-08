@@ -1,5 +1,5 @@
-import {SETS} from './vocabulary.js?v=10';
-export const WORDS = ['paw','onion','horse','lamp','boat','skis','spoon','moose','puddle','shovel','flippers'];
+import {SETS} from './vocabulary.js?v=r1';
+export const WORDS = SETS.initial.words;
 export const RULES = Object.freeze({width:1280,height:720,chunk:960,ground:600,speed:285,gravity:1100,jump:620,coyote:115,buffer:140,reach:104});
 export function random(seed) { let a=seed>>>0; return () => {a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296;}; }
 export function newSession(seed = Math.floor(Math.random()*0xffffffff),position='initial') {

@@ -1,4 +1,4 @@
-export const SYLLABLES=['ЛО','ЛУ','ЛА'];
+export const SYLLABLES=['РА','РО','РУ','РЫ'];
 export const TRAIL=[[10,72],[31,48.4],[27,25],[47.5,62.2],[50,29],[67.2,35.7],[67,75],[82.8,48.3]];
 export const NEIGHBORS=[[1,2],[3,4],[3,4],[5,6],[5,6],[7],[7],[]];
 export function newTrail(encounter=0,syllables=SYLLABLES){const variation=(encounter*5)%8;return {step:0,syllable:syllables[encounter%syllables.length],route:[0,variation&1?2:1,variation&2?4:3,variation&4?6:5,7],phase:'preview',preview:0,elapsed:0,moving:false,done:false,wrong:false,chosen:[0]};}

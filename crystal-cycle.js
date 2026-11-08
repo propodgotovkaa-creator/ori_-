@@ -1,5 +1,5 @@
 import {crystalsFor,groundAt,PANEL_STEP} from './scenery.js';
-import {random} from './core.js?v=10';
+import {random} from './core.js?v=r1';
 export function crystalPlan(saved={},count=11,seed){
  const rng=seed===undefined?null:random(seed),placed=[];
  return Array.from({length:5},(_,i)=>crystalsFor(i)).flat().slice(0,count).map(c=>{

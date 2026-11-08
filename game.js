@@ -1,12 +1,12 @@
-import {SETS,LABELS,wordArt} from './vocabulary.js?v=10';
-import {Homecoming} from './ending.js?v=10';
-import {crystalPlan,recycleCrystals,nextLayoutSeed} from './crystal-cycle.js?v=15';
-import {FireflyTrial} from './firefly.js?v=10';
-import {Spiders,touches} from './encounters.js?v=7';
-import {WORDS,RULES as R,newSession,validSession,collect,completeCard,chunkAt} from './core.js?v=10';
+import {SETS,LABELS,wordArt} from './vocabulary.js?v=r1';
+import {Homecoming} from './ending.js?v=r1';
+import {crystalPlan,recycleCrystals,nextLayoutSeed} from './crystal-cycle.js?v=r1';
+import {FireflyTrial} from './firefly.js?v=r1';
+import {Spiders,touches} from './encounters.js?v=r1';
+import {RULES as R,newSession,validSession,collect,completeCard,chunkAt} from './core.js?v=r1';
 import {PANELS,PANEL_STEP,PANEL_WIDTH,panelAt,groundAt,connector,crystalsFor} from './scenery.js';
 const $=id=>document.getElementById(id);
-const STORE='forest-keeper-soft-v2';
+const STORE='forest-keeper-r-v1';
 let saved=null;try{const s=JSON.parse(sessionStorage.getItem(STORE));if(validSession(s))saved=s;}catch{}
 let session=saved||newSession(),scene,mode='loading',resumeMode='playing';
 if(!saved){session.x=180;session.y=groundAt(session.x)-29;}
@@ -50,12 +50,11 @@ class Forest extends Phaser.Scene {
  constructor(){super('Forest');}
  preload(){scene=this;this.failed=[];this.load.on('loaderror',file=>this.failed.push(file.key));
    this.load.image('spider','assets/spider/spider-v2.png');this.load.image('cocoon','assets/spider/cocoon.png');
-   this.load.image('hero','assets/character/hero-v2.png');this.load.json('metrics','assets/metrics.json?v=10');
+   this.load.image('hero','assets/character/hero-v2.png');this.load.json('metrics','assets/metrics.json?v=r1');
    PANELS.forEach((p,i)=>this.load.image(`panel${i}`,`assets/forest/soft/${p.file}.png`));
    this.load.image('root','assets/forest/soft/root.png');
    for(const [key,path] of Object.entries({tree:'forest/tree',ground:'platforms/ground',branch:'platforms/branch',crystal:'crystals/crystal-v3',flower:'effects/flower'}))this.load.image(key,`assets/${path}.png`);
-   for(const key of ['middle','final','cluster'])this.load.image(key+'Atlas',`assets/words/${key}-atlas.png`);
-   for(const w of WORDS)this.load.image(w,`assets/words/${w}.png`);
+   for(const key of Object.keys(SETS))this.load.image(key+'Atlas',`assets/words/r-${key}-atlas.png`);
  }
  create(){scene=this;if(this.failed.length){$('load-status').textContent='Не удалось загрузить часть игры. Проверьте соединение и обновите страницу.';console.error('Missing assets',this.failed);return;}
    this.metrics=this.cache.json.get('metrics');

@@ -1,8 +1,143 @@
 export const SETS={
- initial:{title:'В начале слова',example:'Лапа · лодка',words:['paw','onion','horse','lamp','boat','skis','spoon','moose','puddle','shovel','flippers'],syllables:['ЛО','ЛУ','ЛА']},
- middle:{title:'В середине слова',example:'Пила · молоко',words:['saw','top','milk','soap','tent','shark','pin','balalaika','acorns','hammer','well'],syllables:['АЛА','ОЛО','УЛУ','ЫЛЫ']},
- final:{title:'В конце слова',example:'Стол · дятел',words:['table','woodpecker','chair','pencilcase','donkey','torch','goblet','buffalo','cauldron','goat'],syllables:['АЛ','ОЛ','УЛ','ЫЛ']},
- cluster:{title:'В стечениях согласных',example:'Белка · яблоко',words:['squirrel','apple','fir','fork','strawberry','cloud','needle','yarn','elephant','sausage'],syllables:['КЛУ','ПЛЫ','СЛА','ПЛО']}
+  "initial": {
+    "title": "В начале слова",
+    "example": "Рука · роза",
+    "words": [
+      "hand",
+      "rose",
+      "chamomile",
+      "lynx",
+      "rainbow",
+      "rocket",
+      "fish",
+      "racket",
+      "wheel",
+      "socket",
+      "shirt"
+    ],
+    "syllables": [
+      "РА",
+      "РО",
+      "РУ",
+      "РЫ"
+    ]
+  },
+  "middle": {
+    "title": "В середине слова",
+    "example": "Корова · барабан",
+    "words": [
+      "cow",
+      "drum",
+      "stackingtoy",
+      "guitar",
+      "ram",
+      "peas",
+      "crown",
+      "corn",
+      "gift",
+      "burrow"
+    ],
+    "syllables": [
+      "АРА",
+      "ОРО",
+      "УРУ",
+      "ЫРЫ"
+    ]
+  },
+  "final": {
+    "title": "В конце слова",
+    "example": "Помидор · сахар",
+    "words": [
+      "tomato",
+      "sugar",
+      "figs",
+      "toadstool",
+      "thief",
+      "rubbish",
+      "motorboat",
+      "samovar",
+      "axe",
+      "mosquito"
+    ],
+    "syllables": [
+      "АР",
+      "ОР",
+      "УР",
+      "ЫР"
+    ]
+  },
+  "cluster": {
+    "title": "В стечениях согласных",
+    "example": "Груша · крот",
+    "words": [
+      "pear",
+      "mole",
+      "firewood",
+      "crocodile",
+      "zebra",
+      "carrot",
+      "helicopter",
+      "doctor",
+      "cake",
+      "basket",
+      "pomegranate"
+    ],
+    "syllables": [
+      "ГРА",
+      "БРО",
+      "ДРЫ",
+      "КРУ"
+    ]
+  }
 };
-export const LABELS={paw:'Лапа',onion:'Лук',horse:'Лошадь',lamp:'Лампа',boat:'Лодка',skis:'Лыжи',spoon:'Ложка',moose:'Лось',puddle:'Лужа',shovel:'Лопата',flippers:'Ласты',saw:'Пила',top:'Юла',milk:'Молоко',soap:'Мыло',tent:'Палатка',shark:'Акула',pin:'Булавка',balalaika:'Балалайка',acorns:'Жёлуди',hammer:'Молоток',well:'Колодец',table:'Стол',woodpecker:'Дятел',chair:'Стул',pencilcase:'Пенал',donkey:'Осёл',torch:'Факел',goblet:'Бокал',buffalo:'Буйвол',cauldron:'Котёл',goat:'Козёл',squirrel:'Белка',apple:'Яблоко',fir:'Ёлка',fork:'Вилка',strawberry:'Клубника',cloud:'Облако',needle:'Иголка',yarn:'Клубок ниток',elephant:'Слон',sausage:'Колбаса'};
-export function wordArt(id){for(const key of ['middle','final','cluster']){const index=SETS[key].words.indexOf(id);if(index>=0)return {src:`assets/words/${key}-atlas.png`,size:'400% 300%',position:`${index%4*100/3}% ${Math.floor(index/4)*50}%`};}return {src:`assets/words/${id}.png`,size:'contain',position:'center'};}
+export const LABELS={
+  "hand": "Рука",
+  "rose": "Роза",
+  "chamomile": "Ромашка",
+  "lynx": "Рысь",
+  "rainbow": "Радуга",
+  "rocket": "Ракета",
+  "fish": "Рыба",
+  "racket": "Ракетка",
+  "wheel": "Руль",
+  "socket": "Розетка",
+  "shirt": "Рубашка",
+  "cow": "Корова",
+  "drum": "Барабан",
+  "stackingtoy": "Пирамидка",
+  "guitar": "Гитара",
+  "ram": "Баран",
+  "peas": "Горох",
+  "crown": "Корона",
+  "corn": "Кукуруза",
+  "gift": "Подарок",
+  "burrow": "Нора",
+  "tomato": "Помидор",
+  "sugar": "Сахар",
+  "figs": "Инжир",
+  "toadstool": "Мухомор",
+  "thief": "Вор",
+  "rubbish": "Мусор",
+  "motorboat": "Катер",
+  "samovar": "Самовар",
+  "axe": "Топор",
+  "mosquito": "Комар",
+  "pear": "Груша",
+  "mole": "Крот",
+  "firewood": "Дрова",
+  "crocodile": "Крокодил",
+  "zebra": "Зебра",
+  "carrot": "Морковь",
+  "helicopter": "Вертолёт",
+  "doctor": "Врач",
+  "cake": "Торт",
+  "basket": "Корзина",
+  "pomegranate": "Гранат"
+};
+export function wordArt(id){
+ for(const [key,set] of Object.entries(SETS)){
+  const index=set.words.indexOf(id);
+  if(index>=0)return {src:`assets/words/r-${key}-atlas.png`,size:'400% 300%',position:`${index%4*100/3}% ${Math.floor(index/4)*50}%`};
+ }
+ throw new Error(`Unknown word: ${id}`);
+}
