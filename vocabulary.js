@@ -1,0 +1,8 @@
+export const SETS={
+ initial:{title:'В начале слова',example:'Лапа · лодка',words:['paw','onion','horse','lamp','boat','skis','spoon','moose','puddle','shovel','flippers'],syllables:['ЛО','ЛУ','ЛА']},
+ middle:{title:'В середине слова',example:'Пила · молоко',words:['saw','top','milk','soap','tent','shark','pin','balalaika','acorns','hammer','well'],syllables:['АЛА','ОЛО','УЛУ','ЫЛЫ']},
+ final:{title:'В конце слова',example:'Стол · дятел',words:['table','woodpecker','chair','pencilcase','donkey','torch','goblet','buffalo','cauldron','goat'],syllables:['АЛ','ОЛ','УЛ','ЫЛ']},
+ cluster:{title:'В стечениях согласных',example:'Белка · яблоко',words:['squirrel','apple','fir','fork','strawberry','cloud','needle','yarn','elephant','sausage'],syllables:['КЛУ','ПЛЫ','СЛА','ПЛО']}
+};
+export const LABELS={paw:'Лапа',onion:'Лук',horse:'Лошадь',lamp:'Лампа',boat:'Лодка',skis:'Лыжи',spoon:'Ложка',moose:'Лось',puddle:'Лужа',shovel:'Лопата',flippers:'Ласты',saw:'Пила',top:'Юла',milk:'Молоко',soap:'Мыло',tent:'Палатка',shark:'Акула',pin:'Булавка',balalaika:'Балалайка',acorns:'Жёлуди',hammer:'Молоток',well:'Колодец',table:'Стол',woodpecker:'Дятел',chair:'Стул',pencilcase:'Пенал',donkey:'Осёл',torch:'Факел',goblet:'Бокал',buffalo:'Буйвол',cauldron:'Котёл',goat:'Козёл',squirrel:'Белка',apple:'Яблоко',fir:'Ёлка',fork:'Вилка',strawberry:'Клубника',cloud:'Облако',needle:'Иголка',yarn:'Клубок ниток',elephant:'Слон',sausage:'Колбаса'};
+export function wordArt(id){for(const key of ['middle','final','cluster']){const index=SETS[key].words.indexOf(id);if(index>=0)return {src:`assets/words/${key}-atlas.png`,size:'400% 300%',position:`${index%4*100/3}% ${Math.floor(index/4)*50}%`};}return {src:`assets/words/${id}.png`,size:'contain',position:'center'};}
